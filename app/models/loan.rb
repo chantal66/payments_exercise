@@ -3,8 +3,11 @@ class Loan < ActiveRecord::Base
   validates :funded_amount, presence: true
 
   def outstanding_balance
+    self.funded_amount - self.payments_sum
+  end
+
+  def payments_sum
     payments_sum = self.payments.sum(:payment_amount)
-    total_payments = payments_sum == nil ? 0 : payments_sum
-    self.funded_amount - total_payments
+    payments_sum == nil ? 0 : payments_sum
   end
 end
