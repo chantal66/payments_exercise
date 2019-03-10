@@ -12,11 +12,15 @@ class PaymentsController < ApplicationController
 
   def create
     outstanding_balance = @loan.outstanding_balance
-    if payment_params[:payment_amount].to_f > outstanding_balance
-      render json: "Your payment should not exceed the outstanding balance", status: 422
-    else
-      @payment = @loan.payments.create!(payment_params)
+    @payment = @loan.payments.new(payment_params)
+    if @payment.valid? && @payment.payment_amount < outstanding_balance
+      @payment.save
       render json: @payment
+    else
+      render json: {
+          error: "Your payment should not exceed the outstanding balance",
+          full_errors: @payment.errors.full_messages
+      },  status: 422
     end
   end
 
