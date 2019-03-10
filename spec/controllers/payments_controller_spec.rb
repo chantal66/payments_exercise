@@ -47,4 +47,14 @@ RSpec.describe PaymentsController, type: :controller do
       expect(raw_loan["payment_date"].to_datetime).to eq(loan.payments.first.payment_date)
     end
   end
+
+  describe '#show' do
+    let(:loan) { Loan.create!(funded_amount: 100.0) }
+    let(:payment) { loan.payments.create!(payment_date: Date.today, payment_amount: 50.0) }
+
+    it 'responds with a 200' do
+      get :show, params: { loan_id: loan.id, id: payment.id }
+      expect(response).to have_http_status(:ok)
+    end
+  end
 end
