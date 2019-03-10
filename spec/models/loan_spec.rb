@@ -10,6 +10,6 @@ RSpec.describe Loan, type: :model do
   end
 
   describe 'validations' do
-    xit { should validate_presence_of(:funded_amount) }
+    it { should validate_presence_of(:funded_amount) }
   end
 end
