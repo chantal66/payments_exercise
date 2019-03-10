@@ -1,4 +1,4 @@
-# Payments Exercise  [![Build Status](https://travis-ci.org/chantal66/payments_exercise.svg?branch=master)](https://travis-ci.org/chantal66/payments_exercise)
+# Payments Exercise  [![Build Status](https://travis-ci.org/chantal66/payments_exercise.svg?branch=master)](https://travis-ci.org/chantal66/payments_exercise) 
 
 ## Overview
 
@@ -46,7 +46,7 @@ Open your browser to `localhost:3000`
 | --- | --- |
 | id | loan ID |
 | funded_amount | amount of money provided to a given user |
-| outstanding_balance | amount owned by a given user |
+| outstanding_balance | amount owed by a given user |
 | created_at | created_at timestamp |
 | updated_at | updated_at timestamp |
 
@@ -59,7 +59,7 @@ Open your browser to `localhost:3000`
 | --- | --- |
 | id | payment ID |
 | loan_id | loan ID |
-| payment_date | Date when the payment was received |
+| payment_date | date when the payment was received |
 | payment_amount | amount paid |
 | created_at | created_at timestamp |
 | updated_at | updated_at timestamp |
