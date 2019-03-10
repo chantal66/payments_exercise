@@ -1,4 +1,4 @@
-# Payments Exercise
+# Payments Exercise  [![Build Status](https://travis-ci.org/chantal66/payments_exercise.svg?branch=master)](https://travis-ci.org/chantal66/payments_exercise)
 
 ## Overview
 
