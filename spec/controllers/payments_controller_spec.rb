@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describre PaymentsController, type: :controller do
+RSpec.describe PaymentsController, type: :controller do
   describe '#create' do
     let(:loan) { Loan.create!(funded_amount: 150.0) }
     let(:valid_params) { { payment_date: Date.today, payment_amount: 50.0 } }
