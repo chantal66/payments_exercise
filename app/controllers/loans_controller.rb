@@ -5,10 +5,10 @@ class LoansController < ActionController::API
   end
 
   def index
-    render json: Loan.all
+    render json: Loan.all, each_searialzer: LoanSerializer
   end
 
   def show
-    render json: Loan.find(params[:id])
+    render json: Loan.find(params[:id]), each_searialzer: LoanSerializer
   end
 end
