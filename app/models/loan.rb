@@ -4,6 +4,7 @@ class Loan < ActiveRecord::Base
 
   def outstanding_balance
     payments_sum = self.payments.sum(:payment_amount)
-    self.funded_amount - payments_sum
+    total_payments = payments_sum == nil ? 0 : payments_sum
+    self.funded_amount - total_payments
   end
 end

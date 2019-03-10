@@ -22,6 +22,7 @@ RSpec.describe PaymentsController, type: :controller do
         post :create, params: { payment: invalid_params, loan_id: loan.id, format: :json }
 
         expect(response).to have_http_status(422)
+        expect(response.body).to eq("Your payment should not exceed the outstanding balance")
       end
     end
   end
