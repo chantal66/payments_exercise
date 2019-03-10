@@ -1,5 +1,9 @@
 class PaymentsController < ApplicationController
-  before_action :set_loan, only: [:create]
+  before_action :set_loan, only: [:index, :create]
+
+  def index
+    render json: @loan.payments
+  end
 
   def create
     outstanding_balance = @loan.outstanding_balance
