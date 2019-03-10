@@ -39,12 +39,12 @@ RSpec.describe PaymentsController, type: :controller do
       loan.payments.create!({ payment_date: Date.today, payment_amount: 50.0 })
 
       get :index, params: { loan_id: loan.id }
-      raw_payments = JSON.parse(response.body).first
+      raw_loan = JSON.parse(response.body).first
 
       expect(response).to have_http_status(200)
-      expect(raw_payments["id"]).to eq(loan.id)
-      expect(raw_payments["payment_amount"].to_f).to eq(loan.payments.first.payment_amount)
-      expect(raw_payments["payment_date"].to_datetime).to eq(loan.payments.first.payment_date)
+      expect(raw_loan["id"]).to eq(loan.id)
+      expect(raw_loan["payment_amount"].to_f).to eq(loan.payments.first.payment_amount)
+      expect(raw_loan["payment_date"].to_datetime).to eq(loan.payments.first.payment_date)
     end
   end
 
@@ -55,16 +55,6 @@ RSpec.describe PaymentsController, type: :controller do
     it 'responds with a 200' do
       get :show, params: { loan_id: loan.id, id: payment.id }
       expect(response).to have_http_status(:ok)
-    end
-
-    it 'has the valid attributes' do
-      get :show, params: { loan_id: loan.id, id: payment.id }
-      raw_loan = JSON.parse(response.body).first
-
-      expect(response).to have_http_status(200)
-      expect(raw_loan["id"]).to eq(loan.id)
-      expect(raw_loan["payment_amount"].to_f).to eq(loan.payments.first.payment_amount)
-      expect(raw_loan["payment_date"].to_datetime).to eq(loan.payments.first.payment_date)
     end
   end
 end
